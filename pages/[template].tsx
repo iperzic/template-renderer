@@ -33,9 +33,7 @@ export async function getStaticProps({
   params,
 }: GetStaticPropsContext): Promise<GetStaticPropsResult<TemplatePageProps>> {
   const { template } = params as Params;
-  const response = await fetch(
-    'https://adapptive-sandbox.bettywebblocks.com/' + template
-  );
+  const response = await fetch(process.env.HOST_URL + template);
 
   if (!response.ok) {
     return {
