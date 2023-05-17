@@ -1,0 +1,49 @@
+.wrapper {
+  padding: 4rem 4rem;
+  position: relative;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  color: white;
+}
+
+.markdown {
+  color: white;
+  padding: 2rem 0;
+}
+
+.links {
+  display: flex;
+}
+
+.link {
+  text-decoration: none;
+  color: white;
+  width: 200px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid white;
+  border-radius: 3px;
+  margin-right: 1rem;
+}
+
+.linkPrimary {
+  border-color: transparent;
+  background-color: #f85a33;
+}
+
+@media (max-width: 786px) {
+  .links {
+    flex-direction: column;
+  }
+
+  .link {
+    margin-bottom: 1rem;
+    margin-right: 0;
+    width: 100%;
+  }
+}
