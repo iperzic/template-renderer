@@ -10,8 +10,8 @@ import styles from '@/styles/HeroBanner.module.css';
 export default function HeroBanner({ elements }: GroupProps) {
   const { markdown_content, media, configuration, urls } = elements[0];
   const height =
-    configuration.find((config: any) => typeof config.height === 'number') ||
-    500;
+    configuration.find((config: any) => typeof config.height === 'number')
+      ?.height || 500;
 
   return (
     <div className={styles.wrapper} style={{ height: height }}>
