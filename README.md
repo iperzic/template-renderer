@@ -1,38 +1,27 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# [DEMO](https://template-renderer.vercel.app/)
 
-## Getting Started
+## Local Development
 
-First, run the development server:
+Before running the application locally, make sure you have your `.env.local` file created, with filled values. See `.env.example` for required keys.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+1. Run `yarn` to install dependencies
+2. Run `yarn start`
+3. Go to `http://localhost:3000` in your browser
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The app is setup in a way that there is only one catch-all page which handles all the routing. Since client pages are tied to server endpoints, we rely on server response for a way to determine if page exists or not. This allows the app to be flexible enough so that new endpoint does not need to be manually added to the app as a known route.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+Next.js is using incremental static regeneration, with a revalidation period of 60 seconds. This hits the sweetspot between SSR and SSG.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+## What I would do differently
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+If I were to start this project again, I would probably not start it with TypeScript, unless there is something like tRPC provided so that server response types are available on client for easier development.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Other than that, I would make components that represent server component (hero banner and category lister) less generic. Right now, they just accept unmodified server data. Instead, I would make each have their own dedicated set of props of only required data.
 
-## Learn More
+## Potential for improvement
 
-To learn more about Next.js, take a look at the following resources:
+- If server was to expose an endpoint to get all available paths, this would allow Next.js to use SSG for the known pages, thus making TTFB much lower.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Loading images on the client can be a bottleneck, since the server returns only one size of the image. Preferably, multiple media quality/size image urls would be returned.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- The design of the app is not fully according to the design in the PDF. PDF contains screenshots, rather than Figma files for example, which is almost impossible to inspect for paddings, fonts and colors.
