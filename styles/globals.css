@@ -11,3 +11,31 @@ body {
 * {
   box-sizing: border-box;
 }
+
+.swiper-button-disabled {
+  display: none !important;
+}
+
+.swiper .swiper-button-next,
+.swiper .swiper-button-prev {
+  background-color: white;
+  color: gray;
+  opacity: 80%;
+}
+
+.swiper .swiper-button-next:after,
+.swiper .swiper-button-prev:after {
+  font-size: 14px;
+}
+
+.swiper .swiper-button-next {
+  right: 0;
+  border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px;
+}
+
+.swiper .swiper-button-prev {
+  left: 0;
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
+}

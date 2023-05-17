@@ -14,7 +14,7 @@ export default function HeroBanner({ elements }: GroupProps) {
       ?.height || 500;
 
   return (
-    <div className={styles.wrapper} style={{ height: height }}>
+    <div className={styles.wrapper} style={{ minHeight: height }}>
       <Image
         src={media[0].media_url}
         alt={media[0].media_alt}
