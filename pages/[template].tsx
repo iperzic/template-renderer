@@ -1,7 +1,12 @@
 import Head from 'next/head';
 import Template from '@/components/Template';
 
-import type { GetServerSidePropsContext, GetServerSidePropsResult } from 'next';
+import type {
+  GetStaticPathsResult,
+  GetStaticPropsContext,
+  GetStaticPropsResult,
+} from 'next';
+import type { Params } from 'next/dist/shared/lib/router/utils/route-matcher';
 
 type TemplatePageProps = {
   title: string;
@@ -24,12 +29,10 @@ export default function TemplatePage({
   );
 }
 
-export async function getServerSideProps({
-  query,
-}: GetServerSidePropsContext): Promise<
-  GetServerSidePropsResult<TemplatePageProps>
-> {
-  const { template } = query;
+export async function getStaticProps({
+  params,
+}: GetStaticPropsContext): Promise<GetStaticPropsResult<TemplatePageProps>> {
+  const { template } = params as Params;
   const response = await fetch(
     'https://adapptive-sandbox.bettywebblocks.com/' + template
   );
@@ -51,5 +54,13 @@ export async function getServerSideProps({
       description: data.meta_description,
       groups: data.groups,
     },
+    revalidate: 60,
+  };
+}
+
+export function getStaticPaths(): GetStaticPathsResult {
+  return {
+    paths: [],
+    fallback: 'blocking',
   };
 }
