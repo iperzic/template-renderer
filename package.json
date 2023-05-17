@@ -1,5 +1,6 @@
 {
   "name": "template-renderer",
+  "description": "A sample template renderer application, part of a hiring assignment",
   "version": "0.1.0",
   "private": true,
   "scripts": {
