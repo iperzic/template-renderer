@@ -37,6 +37,10 @@
 }
 
 @media (max-width: 786px) {
+  .wrapper {
+    padding: 4rem 1rem 1rem;
+  }
+
   .links {
     flex-direction: column;
   }
