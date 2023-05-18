@@ -5,7 +5,7 @@
 Before running the application locally, make sure you have your `.env.local` file created, with filled values. See `.env.example` for required keys.
 
 1. Run `yarn` to install dependencies
-2. Run `yarn start`
+2. Run `yarn dev`
 3. Go to `http://localhost:3000` in your browser
 
 The app is setup in a way that there is only one catch-all page which handles all the routing. Since client pages are tied to server endpoints, we rely on server response for a way to determine if page exists or not. This allows the app to be flexible enough so that new endpoint does not need to be manually added to the app as a known route.
@@ -20,8 +20,6 @@ Other than that, I would make components that represent server component (hero b
 
 ## Potential for improvement
 
-- If server was to expose an endpoint to get all available paths, this would allow Next.js to use SSG for the known pages, thus making TTFB much lower.
-
 - Loading images on the client can be a bottleneck, since the server returns only one size of the image. Preferably, multiple media quality/size image urls would be returned.
-
+- If server was to expose an endpoint to get all available paths, this would allow Next.js to use SSG for the known pages, thus making TTFB much lower.
 - The design of the app is not fully according to the design in the PDF. PDF contains screenshots, rather than Figma files for example, which is almost impossible to inspect for paddings, fonts and colors.
