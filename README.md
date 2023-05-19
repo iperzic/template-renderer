@@ -1,5 +1,19 @@
 # [DEMO](https://template-renderer.vercel.app/)
 
+A demo web application that showcases rendering of pages based on the template information provided by the API.
+
+### Technologies Used
+
+This project is bootsrapped using NextJS's [create-next-app](https://nextjs.org/docs/pages/api-reference/create-next-app).
+
+Important technologies and libraries used:
+
+- [TypeScript](https://www.typescriptlang.org/)
+- [NextJS](https://nextjs.org/) (without `app` folder routing)
+- [CSS modules](https://github.com/css-modules/css-modules)
+- [Swiper](https://swiperjs.com/) - mobile category lister slider
+- [react-markdown](https://github.com/remarkjs/react-markdown) - for rendering markdown content
+
 ## Local Development
 
 Before running the application locally, make sure you have your `.env.local` file created, with filled values. See `.env.example` for required keys.
@@ -14,7 +28,7 @@ Next.js is using incremental static regeneration, with a revalidation period of 
 
 ## What I would do differently
 
-If I were to start this project again, I would probably not start it with TypeScript, unless there is something like tRPC provided so that server response types are available on client for easier development.
+If I were to start this project again, I would probably not start it with TypeScript, unless there is something like tRPC provided so that server response types are available on client for easier development. There could even be another API layer between server endpoint and client, which could provide such functionality. [NextJS API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) could come in handy here.
 
 Other than that, I would make components that represent server component (hero banner and category lister) less generic. Right now, they just accept unmodified server data. Instead, I would make each have their own dedicated set of props of only required data.
 
